@@ -1,1 +1,3 @@
-xianqi-engine
+test_engine
+*.o
+.DS_Store

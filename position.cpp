@@ -1,5 +1,7 @@
 #include "position.h"
 #include "pieces.h"
+#include <cassert>
+#include <iostream>
 
 static const Piece STARTING_POSITION[10][9] = 
 {
@@ -23,4 +25,31 @@ Position::Position() {
     }
 
     sideToMove = RED;
+}
+
+bool isInPalace(int row, int col, Side side) {
+    switch (side) {
+        case RED:
+        return (row >= 7 && row <= 9 && col >= 3 && col <= 5);
+        case BLACK:
+        return (row >= 0 && row <= 2 && col >= 3 && col <= 5);
+        default:
+            std::cerr << "Invalid side value passed to inInPalace" << std::endl;
+            assert(false);
+    }
+}
+
+bool isOnBoard(int row, int col) {
+    return ((row <= 9 && row >= 0) && (col <= 8 && col >= 0));
+}
+
+Position makeMove(const Position& position, Move move) {
+    Position copyPosition = position;
+    Piece movePiece = copyPosition.board[move.fromRow][move.fromCol];
+    copyPosition.board[move.toRow][move.toCol] = movePiece;
+    copyPosition.board[move.fromRow][move.fromCol] = EMPTY;
+
+    copyPosition.sideToMove = (position.sideToMove == RED) ? BLACK : RED;
+
+    return copyPosition;
 }

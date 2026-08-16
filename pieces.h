@@ -23,3 +23,9 @@ enum Side {
     RED,
     BLACK
 };
+
+bool isRed(Piece piece);
+
+bool isBlack(Piece piece);
+
+bool belongsToSide(Piece piece, Side side);
