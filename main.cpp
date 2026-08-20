@@ -1,5 +1,6 @@
 #include "pieces.h"
 #include "position.h"
+#include "UCCI.h"
 #include <iostream>
 using namespace std;
 
@@ -28,14 +29,6 @@ string pieceToString(Piece piece) {
 
 
 int main() {
-    Position newPosition;
-    
-    for (int row = 0; row < 10; row++) {
-        for (int col = 0; col < 9; col++) {
-            cout << pieceToString(newPosition.board[row][col]) << " ";
-        }
-        cout << endl;
-    }
-
+    runUcciLoop();
     return 0;
 }
