@@ -2,3 +2,6 @@ test_engine
 *.o
 .DS_Store
 xiangqi_engine
+xianqi-engine
+xiangqi_engine
+test_engine
